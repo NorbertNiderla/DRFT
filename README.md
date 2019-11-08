@@ -1,7 +1,7 @@
 # TODO:
-  ## - Generacja macierzy kątów ->    Norbert
+  ## - Generacja wektora kątów ->    Norbert
   - wektor z dwóch punktów, rzutowanie na początek osi
-  ## - Generacja macierzy promieni -> Julia
+  ## - Generacja wektora promieni -> Julia
   - rozwiązywanie równań koła dla punktów z drogi
-  ## - Wektor kątów natarcia ->       Ernest
+  ## - Generacja wektora kątów natarcia ->       Ernest
   - kąt między drogą a osią wzdżłużną samochodu
