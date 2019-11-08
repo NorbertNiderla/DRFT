@@ -1,17 +1,18 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % Bloki funkcjonalne (elementy projektu):
-% 1. konwersja mapy z Automated Driving Toolbox na zbiór wektorów
-%             a) w najlepszym wypadku wystarczy zbiór argumentów tych wektorów, 
-%                 jeœli u¿ywany bêdzie wektor znormalizowany
-% 2. konwersja zbioru wektorów œcie¿ki na macierz promieni ³uków po których porusza siê pojazd
-% 3. konwersja zbioru wektorów œcie¿ki na macierz k¹tów natarcia pojazdu
-% 4. funkcja tworz¹cac macierz prêdkoœci pojazdu na podstawie punktów 2 i 3 oraz jakiegoœ wspó³czynnika przyœpieszenia
-% 5. blok licz¹cy materia³ koñcowy i koordynuj¹cy resztê bloków na podstawie 
-%                    punktów 2,3,4. ( w³aœciwie to na ten moment to ju¿ tu jest)
-% 6 jakiœ frontend dla ambitnych ( wykres czy coœtam)
+% 1. konwersja mapy z Automated Driving Toolbox na zbiï¿½r wektorï¿½w
+%             a) w najlepszym wypadku wystarczy zbiï¿½r argumentï¿½w tych wektorï¿½w, 
+%                 jeï¿½li uï¿½ywany bï¿½dzie wektor znormalizowany
+% 2. konwersja zbioru wektorï¿½w ï¿½cieï¿½ki na macierz promieni ï¿½ukï¿½w po ktï¿½rych porusza siï¿½ pojazd
+% 3. konwersja zbioru wektorï¿½w ï¿½cieï¿½ki na macierz kï¿½tï¿½w natarcia pojazdu
+% 4. funkcja tworzï¿½cac macierz prï¿½dkoï¿½ci pojazdu na podstawie punktï¿½w 2 i 3 oraz jakiegoï¿½ wspï¿½czynnika przyï¿½pieszenia
+% 5. blok liczï¿½cy materiaï¿½ koï¿½cowy i koordynujï¿½cy resztï¿½ blokï¿½w na podstawie 
+%                    punktï¿½w 2,3,4. ( wï¿½aï¿½ciwie to na ten moment to juï¿½ tu jest)
+% 6 jakiï¿½ frontend dla ambitnych ( wykres czy coï¿½tam)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 7. blok wykrywaj¹cy understeer w wynikach
-% 8. blok wykrywaj¹cy oversteer w wynikach
+% 7. blok wykrywajï¿½cy understeer w wynikach
+% 8. blok wykrywajï¿½cy oversteer w wynikach
+% dupa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -49,8 +50,8 @@ xBack = aBack.*sin(-angleMatrix);
 yFront = aFront.*cos(angleMatrix);
 yBack = aBack.*cos(angleMatrix);
 
-%za³o¿enia: jak leci lewym bokiem do przodu, czyli tak jakby skrêca w prawo
-%to k¹t jest dodatni
+%zaï¿½oï¿½enia: jak leci lewym bokiem do przodu, czyli tak jakby skrï¿½ca w prawo
+%to kï¿½t jest dodatni
 %x = a*sin(-ang)
 %y = a*cos(ang)
 %rd = l*sin(ang)
