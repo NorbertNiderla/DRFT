@@ -1,18 +1,17 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % Bloki funkcjonalne (elementy projektu):
-% 1. konwersja mapy z Automated Driving Toolbox na zbi�r wektor�w
-%             a) w najlepszym wypadku wystarczy zbi�r argument�w tych wektor�w, 
-%                 je�li u�ywany b�dzie wektor znormalizowany
-% 2. konwersja zbioru wektor�w �cie�ki na macierz promieni �uk�w po kt�rych porusza si� pojazd
-% 3. konwersja zbioru wektor�w �cie�ki na macierz k�t�w natarcia pojazdu
-% 4. funkcja tworz�cac macierz pr�dko�ci pojazdu na podstawie punkt�w 2 i 3 oraz jakiego� wsp�czynnika przy�pieszenia
-% 5. blok licz�cy materia� ko�cowy i koordynuj�cy reszt� blok�w na podstawie 
-%                    punkt�w 2,3,4. ( w�a�ciwie to na ten moment to ju� tu jest)
-% 6 jaki� frontend dla ambitnych ( wykres czy co�tam)
+% 1. konwersja mapy z Automated Driving Toolbox na zbior wektorow
+%             a) w najlepszym wypadku wystarczy zbior argumentow tych wektorow, 
+%                 jesli uzywany bedzie wektor znormalizowany
+% 2. konwersja zbioru wektorow sciezki na macierz promieni lukow po ktorych porusza sie pojazd
+% 3. konwersja zbioru wektorow sciezki na macierz katow natarcia pojazdu
+% 4. funkcja tworzaca macierz predkosci pojazdu na podstawie punktoww 2 i 3 oraz jakiegos wspolczynnika przyspieszenia
+% 5. blok liczacy material koncowy i koordynujacy reszte blokow na podstawie 
+%                    punktow 2,3,4. ( wlasciwie to na ten moment to juz tu jest)
+% 6 jakis frontend dla ambitnych ( wykres czy costam)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 7. blok wykrywaj�cy understeer w wynikach
-% 8. blok wykrywaj�cy oversteer w wynikach
-% dupa
+% 7. blok wykrywajacy understeer w wynikach
+% 8. blok wykrywajacy oversteer w wynikach
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
