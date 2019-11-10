@@ -26,8 +26,8 @@ carLenght = 4;
 turnRadius = linspace(1,10,100);
 size = 100;
 
-waypoints = [0 0;
-    6 -5.1;
+waypoints = [0 0; %lejpojnty sa tu wstawione przykladowe
+    6 -5.1;       % normalnie to beda brane z mojej funkcji
     8.8 -5.6;
     11.8 -5.7;
     15.7 -3.3;
@@ -71,8 +71,8 @@ xBack = aBack.*sin(-angleMatrix);
 yFront = aFront.*cos(angleMatrix);
 yBack = aBack.*cos(angleMatrix);
 
-%za�o�enia: jak leci lewym bokiem do przodu, czyli tak jakby skr�ca w prawo
-%to k�t jest dodatni
+%zalozenia: jak leci lewym bokiem do przodu, czyli tak jakby skreca w prawo
+%to ktory jest dodatni
 %x = a*sin(-ang)
 %y = a*cos(ang)
 %rd = l*sin(ang)
