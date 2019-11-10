@@ -43,4 +43,12 @@ for i = 0:((size - reszta)/functionValue - 1)
 end
 
 
+angle = [];
+for i = 1:(size(points, 1)-1)
+   angle = [angle arctan((points(i+1,2)-points(i,2))/(points(i+1,1)-points(i,1)))];
+    
+
+end
+
+
 
