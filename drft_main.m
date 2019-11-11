@@ -21,40 +21,20 @@ clear all
 close all
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-global carLenght turnRadius size turnRadiusBack angleMatrix waypoints;
+global carLenght turnRadius size turnRadiusBack angleMatrix waypoints angleDiffMatrix;
 carLenght = 4;
 turnRadius = linspace(1,10,100);
 size = 100;
 
-waypoints = [0 0; %lejpojnty sa tu wstawione przykladowe
-    6 -5.1;       % normalnie to beda brane z mojej funkcji
-    8.8 -5.6;
-    11.8 -5.7;
-    15.7 -3.3;
-    17.4 -0.4;
-    19.6 4;
-    21.3 4.2;
-    24.8 4.9;
-    28.6 3.1;
-    28.9 -1.3;
-    32.5 -4.3;
-    34.1 -6.7;
-    34.8 -11.6;
-    39.4 -10.2;    42.3 -2.5;
-    39.3 4.6;
-    37.2 10.1;
-    27.9 12.8;
-    18.1 13.7;
-    8.8 14.5];
-
+[angleMatrix, angleDiffMatrix, waypoints] = routeMaking;
 radiusMatrix = radiusCalculation;
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 a = @(v, r) (v.^2)./r;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
-angleMatrix =ones(1, size)*(0.25*pi);
 frontVelocityMatrix = ones(1, size)*16;
 backVelocityMatrix = frontVelocityMatrix + frontVelocityMatrix.*(carLenght ./ turnRadius).*sin(angleMatrix);
 turnRadiusBack = turnRadius + (carLenght*sin(angleMatrix));
