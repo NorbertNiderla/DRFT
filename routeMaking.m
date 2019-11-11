@@ -1,17 +1,18 @@
-close all
-clear all
-global waypoints
+function [angle, angleDiff, waypoints] = routeMaking
 
 
-%
+%WAZNA ADNOTACJA, JAK ANGLEDIFF JEST UJEMNY TO TRASA SCKRECA W PRAWO, MOZNA
+%TO LATWO ZMIENIC W MIEJSCU GDZIE ANGLEDIFF JEST LICZONY
+
+
 waypoints = load('waypoints');
 waypoints = waypoints.waypoints;
-limitAngle = 0.5233;
-degreeOfPolynomial = 3;
-pathVectorLength = 0.5;
-size = length(waypoints);
-rest = mod(size-1, degreeOfPolynomial);
-points_all = [];
+
+%limitAngle = 0.5233;  
+%degreeOfPolynomial = 3;
+pathVectorLength = 0.5; %gestosc "probkowania"
+%size = length(waypoints);
+%rest = mod(size-1, degreeOfPolynomial);
 
 % for i = 0:((size - rest)/degreeOfPolynomial - 1)
 %     x = transpose(waypoints(degreeOfPolynomial*i+1 : degreeOfPolynomial*(i+1)+1 , 1));
@@ -28,13 +29,14 @@ points_all = [];
 
 curveLength = arclength(waypoints(:,1), waypoints(:,2));
 points_all = interparc(round(curveLength/pathVectorLength), waypoints(:,1), waypoints(:,2)); 
+
 angle = [];
 for j = 1:(length(points_all)-1)
    angle = [angle atan2((points_all(j+1,2)-points_all(j,2)), (points_all(j+1,1)-points_all(j,1)))];
 end
 
 angleDiff = angle - [0 angle(1:(length(angle)-1))];
-
+waypoints = points_all;
 % t = 1;
 % while t <= length(angleDiff)
 %     if abs(angleDiff(t)) > limitAngle
@@ -60,4 +62,4 @@ angleDiff = angle - [0 angle(1:(length(angle)-1))];
 %     finalPoints(t,2) = finalPoints(t-1,2) + sin(angle(t-1))*pathVectorLength;
 % end
 
-plot(points_all(:,1), points_all(:,2) ) 
+end
