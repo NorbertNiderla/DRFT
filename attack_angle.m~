@@ -1,0 +1,31 @@
+function att_angle = attack_angle(agent_coordinates, waypoints)
+% function calculating attack angle of the agent.
+% params:
+%   - agent_coordinates: 2x2 matrix, containing front and rear coordinates
+%           of the agent, first row for front, second for the rear
+%   - waypoints: 2x2 matrix, containing coordinates of two consecutive
+%           waypoints
+% returns:
+%   - angle of attack of the agent
+
+% argument size check
+if ~isequal(size(agent_coordinates), size(waypoints), [2 2])
+    erorr('Wrong dimensions of the arguments.')
+end
+
+% creating vectors
+
+% normalizing coordinates
+agent_cord_norm = agent_coordinates(1, :);
+
+
+agent_vec = agent_coordinates(2, :) - agent_coordinates(1, :);
+waypoints_vec = waypoints_vec(2, :) - waypoints_vec(1, :);
+
+att_angle = atan2d(norm(cross(agent_coordinates,waypoints_vec)), ...
+            dot(agent_coordinates,waypoints_vec));
+
+
+
+end
+
