@@ -15,7 +15,7 @@ function [R] = radiusCalculation(x,y)
     
     xr = (b1n-b2n)/(a2n-a1n);
     yr = xr*a2n+b2n;
-    R(n-2)=sqrt((xr-x(n))^2+(yr-y(n))^2)
+    R(n-2)=sqrt((xr-x(n))^2+(yr-y(n))^2);
     end
     
 end
