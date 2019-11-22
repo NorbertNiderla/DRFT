@@ -23,7 +23,7 @@ function [angle, angleDiff, waypoints] = routeMaking
     end
 
     %calculation of angle differences
-    angleDiff = angle - [0 angle(1:(length(angle)-1))];
+    angleDiff = diff(angle);
     
     waypoints = points_all;
 end
