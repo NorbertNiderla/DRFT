@@ -1,4 +1,4 @@
-function [angle, angleDiff, waypoints] = routeMaking
+function [angle, waypoints] = routeMaking
 
     %WAZNA ADNOTACJA, JAK ANGLEDIFF JEST UJEMNY TO TRASA SCKRECA W PRAWO, MOZNA
     %TO LATWO ZMIENIC W MIEJSCU GDZIE ANGLEDIFF JEST LICZONY
@@ -22,8 +22,5 @@ function [angle, angleDiff, waypoints] = routeMaking
        angle = [angle atan2((points_all(j+1,2)-points_all(j,2)), (points_all(j+1,1)-points_all(j,1)))];
     end
 
-    %calculation of angle differences
-    angleDiff = diff(angle);
-    
     waypoints = points_all;
 end
