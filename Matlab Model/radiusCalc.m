@@ -1,9 +1,9 @@
-function [R] = radiusCalculation(waypoints)
+function result = radiusCalc(waypoints)
 
-    k = length(waypoints);
-    x = waypoints(:,1);
-    y = waypoints(:,2);
-
+    k=length(waypoints);%wektor x jest poziomy
+    x=waypoints(:,1);
+    y=waypoints(:,2);
+    R = zeros(1, k);
     for n = 2:k-1
         b2=(y(n+1)*x(n)-y(n)*x(n+1))/(x(n+1)+x(n));
         a2=(y(n)-b2)/x(n);
@@ -17,6 +17,8 @@ function [R] = radiusCalculation(waypoints)
 
         xr = (b1n-b2n)/(a2n-a1n);
         yr = xr*a2n+b2n;
-        R(n-1)=sqrt((xr-x(n+1))^2+(yr-y(n+1))^2);
+        R(n)=sqrt((xr-x(n+1))^2+(yr-y(n+1))^2);
+
     end
+    result = R;
 end
