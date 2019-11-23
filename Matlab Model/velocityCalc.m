@@ -1,4 +1,4 @@
-function v = velocityMatrixCalc(angleMatrix)
+function v = velocityCalc(angleMatrix)
 
 global aMax vMax v0
 k=length(angleMatrix);
