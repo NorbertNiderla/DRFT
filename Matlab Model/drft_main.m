@@ -17,9 +17,17 @@ close all
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 carLenght = 4;
+<<<<<<< Updated upstream
 [routeAngleMatrix, routeAngleDiffMatrix, waypoints] = routeMaking;
 size = length(waypoints);
 radiusMatrix = radiusCalculation;
+=======
+turnRadius = linspace(1,10,100);
+size = 100;
+
+[angleMatrix, angleDiffMatrix, waypoints] = routeMaking;
+radiusMatrix = radiusCalculation(waypoints);
+>>>>>>> Stashed changes
 
 %tu wchodzi funkcja na kat natarcia
 %angleMatrix = costam;
@@ -33,6 +41,7 @@ a = @(v, r) (v.^2)./r;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
+<<<<<<< Updated upstream
 backVelocityMatrix = frontVelocityMatrix + frontVelocityMatrix.*(carLenght ./ radiusMatrix).*sin(angleMatrix);
 radiusMatrixBack = radiusMatrix + (carLenght*sin(angleMatrix));
 
@@ -58,3 +67,31 @@ aFront = (xFront.^2+yFront.^2).^0.5;
 aBack = (xBack.^2+yBack.^2).^0.5;
 
 ratio = aFront ./ aBack;
+=======
+% frontVelocityMatrix = ones(1, size)*16;
+% backVelocityMatrix = frontVelocityMatrix + frontVelocityMatrix.*(carLenght ./ turnRadius).*sin(angleMatrix);
+% turnRadiusBack = turnRadius + (carLenght*sin(angleMatrix));
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% aFront = a(frontVelocityMatrix, turnRadius);
+% aBack = a(backVelocityMatrix, turnRadiusBack);
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% xFront = aFront.*sin(-angleMatrix);
+% xBack = aBack.*sin(-angleMatrix);
+% yFront = aFront.*cos(angleMatrix);
+% yBack = aBack.*cos(angleMatrix);
+% 
+% %zalozenia: jak leci lewym bokiem do przodu, czyli tak jakby skreca w prawo
+% %to ktory jest dodatni
+% %x = a*sin(-ang)
+% %y = a*cos(ang)
+% %rd = l*sin(ang)
+% 
+% aFront = (xFront.^2+yFront.^2).^0.5;
+% aBack = (xBack.^2+yBack.^2).^0.5;
+% 
+% ratio = aFront ./ aBack;
+>>>>>>> Stashed changes
