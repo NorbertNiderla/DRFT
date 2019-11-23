@@ -27,6 +27,6 @@ ratio = aFront ./ aBack;
 
 
 plot(1:length(frontVelocityMatrix),frontVelocityMatrix,1:length(diff(angleMatrix)),diff(angleMatrix)*50,1:length(attackAngleMatrix),attackAngleMatrix*50)
-legend('velocity','angle')
+legend('velocity','angle','attack angle')
 %,diff(angleMatrix),attackAngleMatrix,1:1.8)
 
