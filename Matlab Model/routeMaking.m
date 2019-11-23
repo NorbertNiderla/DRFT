@@ -21,6 +21,6 @@ function [angle, waypoints] = routeMaking
     for j = 1:(length(points_all)-1)
        angle = [angle atan2((points_all(j+1,2)-points_all(j,2)), (points_all(j+1,1)-points_all(j,1)))];
     end
-
+angle = unwrap([angle angle(length(angle))]);
     waypoints = points_all;
 end
