@@ -1,4 +1,3 @@
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % Bloki funkcjonalne (elementy projektu):
 % 1. konwersja mapy z Automated Driving Toolbox na zbior wektorow
 % 2. konwersja zbioru wektorow sciezki na macierz promieni lukow po ktorych porusza sie pojazd
@@ -6,56 +5,41 @@
 % 4. funkcja tworzaca macierz predkosci pojazdu na podstawie punktoww 2 i 3 oraz jakiegos wspolczynnika przyspieszenia
 % 5. blok liczacy material koncowy i koordynujacy reszte blokow na podstawie punktow 2,3,4.
 % 6. wykresy 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % 7. blok wykrywajacy understeer w wynikach
 % 8. blok wykrywajacy oversteer w wynikach
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear all
 close all
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-carLenght = 4;
-<<<<<<< Updated upstream
-[routeAngleMatrix, routeAngleDiffMatrix, waypoints] = routeMaking;
-size = length(waypoints);
-radiusMatrix = radiusCalculation;
-=======
-turnRadius = linspace(1,10,100);
-size = 100;
-
-[angleMatrix, angleDiffMatrix, waypoints] = routeMaking;
-radiusMatrix = radiusCalculation(waypoints);
->>>>>>> Stashed changes
-
-%tu wchodzi funkcja na kat natarcia
-%angleMatrix = costam;
-
-%tu wchodzi funkcja na predkosc pojazdu
-%frontVelocityMatrix = costam; 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%equations
 a = @(v, r) (v.^2)./r;
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+%basic parameters
+carLenght = 4;
+[angleMatrix, angleDiffMatrix, waypoints] = routeMaking;
+size = length(waypoints);
 
-<<<<<<< Updated upstream
-backVelocityMatrix = frontVelocityMatrix + frontVelocityMatrix.*(carLenght ./ radiusMatrix).*sin(angleMatrix);
+%front and backend radius
+radiusMatrix = radiusCalc;
 radiusMatrixBack = radiusMatrix + (carLenght*sin(angleMatrix));
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%tu wchodzi liczenie macierzy w funkcjach wlasnie pisanych
+%frontVelocityMatrix = velocityMatrixCalc(angleMatrix, angleDiffMatrix); 
+%attackAngleMatrix = attackAngleMatrixCalc(frontVelocityMatrix, angleMatrix, angleDiffMatrix);
 
+%backend velocity
+backVelocityMatrix = frontVelocityMatrix + frontVelocityMatrix.*(carLenght ./ radiusMatrix).*sin(angleMatrix);
+
+%acceleration on front and back
 aFront = a(frontVelocityMatrix, radiusMatrix);
 aBack = a(backVelocityMatrix, radiusMatrixBack);
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-xFront = aFront.*sin(-angleMatrix);
-xBack = aBack.*sin(-angleMatrix);
-yFront = aFront.*cos(angleMatrix);
-yBack = aBack.*cos(angleMatrix);
+%acceleration along x and y axes
+axFront = aFront.*sin(-angleMatrix);
+axBack = aBack.*sin(-angleMatrix);
+ayFront = aFront.*cos(angleMatrix);
+ayBack = aBack.*cos(angleMatrix);
 
 %zalozenia: jak leci lewym bokiem do przodu, czyli tak jakby skreca w prawo
 %to ktory jest dodatni
@@ -63,35 +47,9 @@ yBack = aBack.*cos(angleMatrix);
 %y = a*cos(ang)
 %rd = l*sin(ang)
 
-aFront = (xFront.^2+yFront.^2).^0.5;
-aBack = (xBack.^2+yBack.^2).^0.5;
+%front and back end complex acceleration
+aFront = (axFront.^2+ayFront.^2).^0.5;
+aBack = (axBack.^2+ayBack.^2).^0.5;
 
+%acceleration ratio
 ratio = aFront ./ aBack;
-=======
-% frontVelocityMatrix = ones(1, size)*16;
-% backVelocityMatrix = frontVelocityMatrix + frontVelocityMatrix.*(carLenght ./ turnRadius).*sin(angleMatrix);
-% turnRadiusBack = turnRadius + (carLenght*sin(angleMatrix));
-% 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% aFront = a(frontVelocityMatrix, turnRadius);
-% aBack = a(backVelocityMatrix, turnRadiusBack);
-% 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% xFront = aFront.*sin(-angleMatrix);
-% xBack = aBack.*sin(-angleMatrix);
-% yFront = aFront.*cos(angleMatrix);
-% yBack = aBack.*cos(angleMatrix);
-% 
-% %zalozenia: jak leci lewym bokiem do przodu, czyli tak jakby skreca w prawo
-% %to ktory jest dodatni
-% %x = a*sin(-ang)
-% %y = a*cos(ang)
-% %rd = l*sin(ang)
-% 
-% aFront = (xFront.^2+yFront.^2).^0.5;
-% aBack = (xBack.^2+yBack.^2).^0.5;
-% 
-% ratio = aFront ./ aBack;
->>>>>>> Stashed changes

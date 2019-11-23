@@ -1,7 +1,5 @@
-function result = radiusCalculation(waypoints)
+function result = radiusCalc(waypoints)
 
-<<<<<<< Updated upstream
-    
     k=length(waypoints);%wektor x jest poziomy
     x=waypoints(:,1);
     y=waypoints(:,2);
@@ -20,7 +18,7 @@ function result = radiusCalculation(waypoints)
         xr = (b1n-b2n)/(a2n-a1n);
         yr = xr*a2n+b2n;
         R(n)=sqrt((xr-x(n+1))^2+(yr-y(n+1))^2);
->>>>>>> Stashed changes
+
     end
     result = R;
 end
