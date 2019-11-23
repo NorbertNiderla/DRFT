@@ -1,6 +1,11 @@
 clear all
 close all
 
+global aMax vMax v0
+aMax=5.5;
+vMax=50;
+v0=0;
+
 a = @(v, r) (v.^2)./r;
 
 carLenght = 4;

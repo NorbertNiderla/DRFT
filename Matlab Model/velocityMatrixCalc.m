@@ -1,8 +1,6 @@
 function v = velocityMatrixCalc(angleMatrix)
 
-aMax=5.5;
-vMax=50;
-v0=0;
+global aMax vMax v0
 k=length(angleMatrix);
 v=ones(1,k);
 v(1)=v0;
