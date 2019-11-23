@@ -9,24 +9,22 @@ v0=20;
 a = @(v, r) (v.^2)./r;
 
 carLenght = 4;
-[angleMatrix, waypoints] = routeMaking;
+[angle, waypoints] = routeMaking;
 size = length(waypoints);
 
-radiusMatrix = radiusCalc(waypoints);
-radiusMatrixBack = radiusMatrix + (carLenght*sin(angleMatrix));
+radius = radiusCalc(waypoints);
+radiusBack = radius + (carLenght*sin(angle));
 
-frontVelocityMatrix = velocityMatrixCalc(angleMatrix); 
-attackAngleMatrix = attackAngleMatrixCalc(angleMatrix, frontVelocityMatrix);
+frontVelocity = velocityMatrixCalc(angle); 
+attackAngle = attackAngleCalc(angle, frontVelocity);
 
-backVelocityMatrix = frontVelocityMatrix + frontVelocityMatrix.*(carLenght ./ radiusMatrix).*sin(angleMatrix);
+backVelocityMatrix = frontVelocity + frontVelocity.*(carLenght ./ radius).*sin(angle);
 
-aFront = a(frontVelocityMatrix, radiusMatrix).*exp(1i*(angleMatrix+0.25*pi));
-aBack = a(backVelocityMatrix, radiusMatrix).*exp(1i*(angleMatrix+0.25*pi));
+aFront = a(frontVelocity, radius).*exp(1i*(angle+0.25*pi));
+aBack = a(backVelocityMatrix, radiusBack).*exp(1i*(angle+0.25*pi));
 
-ratio = aFront ./ aBack;
+ratio = real(aFront ./ aBack);        
 
-
-plot(1:length(frontVelocityMatrix),frontVelocityMatrix,1:length(diff(angleMatrix)),diff(angleMatrix)*50,1:length(attackAngleMatrix),attackAngleMatrix*50)
-legend('velocity','angle','attack angle')
-%,diff(angleMatrix),attackAngleMatrix,1:1.8)
+%plot(1:length(frontVelocityMatrix),frontVelocityMatrix,1:length(diff(angleMatrix)),diff(angleMatrix)*50,1:length(attackAngleMatrix),attackAngleMatrix*50)
+%legend('velocity','angle')
 
