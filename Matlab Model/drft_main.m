@@ -12,24 +12,24 @@ carLenght = 4;
 [angle, waypoints] = routeMaking;
 N = length(waypoints);
 
-frontVelocity = velocityCalc(angle); 
+radius = radiusCalc(waypoints);
+frontVelocity = velocityCalc(angle, radius); 
 attackAngle = attackAngleCalc(angle, frontVelocity);
 
-radius = radiusCalc(waypoints);
-radiusBack = radius + (carLenght*sin(attackAngle));
+radiusBack = radius + (carLenght*abs(sin(attackAngle)));
 
-backVelocity = frontVelocity + frontVelocity.*(carLenght ./ radius).*cos(attackAngle-0.5*pi);
+backVelocity = frontVelocity.*(radiusBack./radius);
 
 aFrontMovement =  [diff(frontVelocity) 0].*exp(1i*(attackAngle));
 aBackMovement =  [diff(backVelocity) 0].*exp(1i*(attackAngle));
-aFront = a(frontVelocity, radius).*exp(1i*(attackAngle+0.25*pi));
-aBack = a(backVelocity, radiusBack).*exp(1i*(attackAngle+0.25*pi));
+aFront = a(frontVelocity, radius).*exp(1i*(attackAngle+0.5*pi));
+aBack = a(backVelocity, radiusBack).*exp(1i*(attackAngle+0.5*pi));
 
 aFrontAll = aFront + aFrontMovement;
 aBackAll = aBack + aFrontMovement;
 
-ratio = [0 abs(aFront(2:N-1))./abs(aBack(2:N-1)) 0];        
-
+ratio = [0 abs(aBack(2:N-1))./abs(aFront(2:N-1)) 0];        
+ratioAll = [0 abs(aBackAll(2:N-1))./abs(aFrontAll(2:N-1)) 0];
 figure(1)
 plot(1:N,ratio,1:N,[0 diff(angle)]+1, 1:N, attackAngle+1)
 legend('ratio', 'angle', 'attack')
