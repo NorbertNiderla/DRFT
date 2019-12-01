@@ -47,7 +47,7 @@ waypoints = [0 0; %lejpojnty sa tu wstawione przykladowe
     18.1 13.7;
     8.8 14.5];
 
-radiusMatrix = radiusCalculation;
+radiusMatrix = radiusCalc(waypoints);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 a = @(v, r) (v.^2)./r;
