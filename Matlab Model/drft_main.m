@@ -28,6 +28,11 @@ aBack = a(backVelocity, radiusBack).*exp(1i*(attackAngle+0.5*pi));
 aFrontAll = aFront + aFrontMovement;
 aBackAll = aBack + aFrontMovement;
 
+t = [0];
+for x = 2:length(waypoints)
+    t(x) = t(x-1) + norm(waypoints(x,:) - waypoints(x-1,:))/frontVelocity(x);  
+end
+
 ratio = [0 abs(aBack(2:N-1))./abs(aFront(2:N-1)) 0];        
 ratioAll = [0 abs(aBackAll(2:N-1))./abs(aFrontAll(2:N-1)) 0];
 figure(1)
