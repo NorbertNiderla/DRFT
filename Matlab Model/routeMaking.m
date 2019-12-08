@@ -4,7 +4,7 @@ function [angle, waypoints] = routeMaking
     %TO LATWO ZMIENIC W MIEJSCU GDZIE ANGLEDIFF JEST LICZONY
 
     %waypoints loading
-    waypoints = load('waypoints');
+    waypoints = load('waypoints_duze');
     waypoints = waypoints.waypoints;
     
     %"sampling density"

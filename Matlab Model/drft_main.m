@@ -5,7 +5,7 @@ global aMax vMax v0
 aMax=5.5;
 vMax=50;
 v0=20;
-
+driftRatio = 1.00001;
 a = @(v, r) (v.^2)./r;
 
 carLenght = 4;
@@ -32,6 +32,17 @@ t = [0];
 for x = 2:length(waypoints)
     t(x) = t(x-1) + norm(waypoints(x,:) - waypoints(x-1,:))/frontVelocity(x);  
 end
+
+drift = [];
+for i = 1:length(ratio)
+    if ratio(i) <driftRatio
+        drift(i) = 0;
+    else
+        drift(i) = 1;
+    end
+end
+
+dane_dla_ernesta = transpose([t; real(aBackAll); imag(aBackAll); real(aFrontAll); imag(aFrontAll); drift]);
 
 ratio = [0 abs(aBack(2:N-1))./abs(aFront(2:N-1)) 0];        
 ratioAll = [0 abs(aBackAll(2:N-1))./abs(aFrontAll(2:N-1)) 0];
