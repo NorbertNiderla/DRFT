@@ -1,10 +1,17 @@
+%  ______ _____ ____  ______ _____    _______ ______          __  __ 
+% |  ____|_   _|  _ \|  ____|  __ \  |__   __|  ____|   /\   |  \/  |
+% | |__    | | | |_) | |__  | |__) |    | |  | |__     /  \  | \  / |
+% |  __|   | | |  _ <|  __| |  _  /     | |  |  __|   / /\ \ | |\/| |
+% | |     _| |_| |_) | |____| | \ \     | |  | |____ / ____ \| |  | |
+% |_|    |_____|____/|______|_|  \_\    |_|  |______/_/    \_\_|  |_|
+
 function [angle, waypoints] = routeMaking
 
     %WAZNA ADNOTACJA, JAK ANGLEDIFF JEST UJEMNY TO TRASA SCKRECA W PRAWO, MOZNA
     %TO LATWO ZMIENIC W MIEJSCU GDZIE ANGLEDIFF JEST LICZONY
 
     %waypoints loading
-    waypoints = load('waypoints_duze');
+    waypoints = load('waypoints.mat');
     waypoints = waypoints.waypoints;
     
     %"sampling density"
@@ -21,6 +28,7 @@ function [angle, waypoints] = routeMaking
     for j = 1:(length(points_all)-1)
        angle = [angle atan2((points_all(j+1,2)-points_all(j,2)), (points_all(j+1,1)-points_all(j,1)))];
     end
-angle = unwrap([angle angle(length(angle))]);
+    
+    angle = unwrap([angle angle(length(angle))]);
     waypoints = points_all;
 end
