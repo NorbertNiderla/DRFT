@@ -7,9 +7,6 @@
 
 function [angle, waypoints] = routeMaking
 
-    %WAZNA ADNOTACJA, JAK ANGLEDIFF JEST UJEMNY TO TRASA SCKRECA W PRAWO, MOZNA
-    %TO LATWO ZMIENIC W MIEJSCU GDZIE ANGLEDIFF JEST LICZONY
-
     %waypoints loading
     waypoints = load('waypoints.mat');
     waypoints = waypoints.waypoints;
@@ -29,6 +26,8 @@ function [angle, waypoints] = routeMaking
        angle = [angle atan2((points_all(j+1,2)-points_all(j,2)), (points_all(j+1,1)-points_all(j,1)))];
     end
     
+    %calculating actual angle
     angle = unwrap([angle angle(length(angle))]);
+    
     waypoints = points_all;
 end

@@ -1,3 +1,4 @@
+
 %  ______ _____ ____  ______ _____    _______ ______          __  __ 
 % |  ____|_   _|  _ \|  ____|  __ \  |__   __|  ____|   /\   |  \/  |
 % | |__    | | | |_) | |__  | |__) |    | |  | |__     /  \  | \  / |
@@ -12,8 +13,10 @@ function v = velocityCalc(angleMatrix, aMax, vMax, v0)
     v(1)=v0;
     z=10; %Acceleration Factor
     f=2; %Decceleration Factor
+    %calculating acceleration
     a=z*[cos(diff(angleMatrix)*2.5*pi)*aMax 0].*[atan(diff(diff(angleMatrix))*f) 0 0];
 
+    %creation of velocity matrix
     for i=1:k-1
         v(i+1)=v(i)+(-v(i)/vMax+1)*a(i);
         if v(i+1)>vMax

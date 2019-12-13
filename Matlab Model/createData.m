@@ -5,12 +5,15 @@
 % | |     _| |_| |_) | |____| | \ \     | |  | |____ / ____ \| |  | |
 % |_|    |_____|____/|______|_|  \_\    |_|  |______/_/    \_\_|  |_|
 
-function attackAngle = attackAngleCalc(angle, frontVelocity, vMax)
-    k = 15; %Slip Factor
-    
-    %creation and calculation of attack angle matrix, where attack angle is
-    %angle between road and longitudinal axis of car
-    attackAngle = k*atan(frontVelocity/(pi*vMax)).*([0 diff(angle)]);
-    attackAngle = attackAngle-[diff(angle) attackAngle(length(attackAngle))];
+
+function data = createData(aFront, aBack, waypoints, frontVelocity, drift)
+t = [0];
+% calculating time stamps of each sample
+for x = 2:length(waypoints)
+    t(x) = t(x-1) + norm(waypoints(x,:) - waypoints(x-1,:))/frontVelocity(x);  
+end
+%saving data
+data = transpose([t; real(aBack); imag(aBack); real(aFront); imag(aFront); drift]);
+csvwrite('data.csv', data);
 end
 
