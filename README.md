@@ -1,14 +1,15 @@
-**PROJEKT _DRFT_**
+**PROJEKT _DRFT_** - pomiar jakości driftu
 =======
 
-## Boss lvl 100:
+## Kierownik:
 * Piotr Araszkiewicz
 
-## Liczenie:
-* Ernest Pokropek
+## Model:
 * Norbert Niderla
-* Julia Karwat
 
+## Machine learning:
+* Ernest Pokropek
+* 
 ## Czujniki:
 * Michal Golas
 * Mateusz Jasinski
