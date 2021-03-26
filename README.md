@@ -9,7 +9,7 @@
 
 ## Machine learning:
 * Ernest Pokropek
-* 
+
 ## Czujniki:
 * Michal Golas
 * Mateusz Jasinski
