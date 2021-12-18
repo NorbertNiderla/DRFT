@@ -1,19 +1,8 @@
-**PROJEKT _DRFT_** - pomiar jakości driftu
-=======
+# DRFT
 
-## Kierownik:
+Matlab model of drifting car
+
+### People involved:
 * Piotr Araszkiewicz
-
-## Model:
 * Norbert Niderla
-
-## Machine learning:
 * Ernest Pokropek
-
-## Czujniki:
-* Michal Golas
-* Mateusz Jasinski
-* Piotr Cypcer
-* Kuba Kasperek
-* Kacper Murat
-* Katarzyna Sopinska
