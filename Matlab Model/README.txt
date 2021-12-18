@@ -1,1 +1,1 @@
-To run the simulation "drft_main" script should be started.
+`drft_main.m` is main file in this simulation.
